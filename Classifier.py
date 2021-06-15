@@ -6,8 +6,12 @@
 
 import torch
 import torch.nn as nn
-import  torchvision
+import torchvision
 import matplotlib.pyplot as plt
-import torchvision.tranforms as transforms
+import torchvision
 
-device = torch.device("cuda" if torch.a.is_avalable() else "cpu")
+if __name__ == '__main__':
+    print("torch with zeros:\n", torch.zeros(5,5))
+    print("torch that is empty:\n ", torch.empty(5,5))
+    print("torch with random numbers:\n", torch.rand(5,5))
+    # device = torch.device("cuda" if torch.a.is_avalable() else "cpu")
