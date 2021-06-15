@@ -158,7 +158,7 @@ def generateTrainingSetAnd(num_train):
         zero:float=random.uniform(-0.2,0.2)
         one:float=random.uniform(0.2,1.2)
         training_examples.append([random.choice([zero, one]),random.choice([zero, one])])
-        # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.8 as 1.0
+        # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.75 as 1.0
         training_labels.append(1.0 if training_examples[i][0] > 0.75 and training_examples[i][1] > 0.75 else 0.0)
 
     return training_examples, training_labels
@@ -193,7 +193,7 @@ def generateTrainingSetOr(num_train):
         zero:float=random.uniform(-0.2,0.2)
         one:float=random.uniform(0.8,1.2)
         training_examples.append([random.choice([zero, one]),random.choice([zero, one])])
-        # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.8 as 1.0
+        # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.75 as 1.0
         # training_labels.append(1.0 if training_examples[i][0] > 0.75 or training_examples[i][1] > 0.75 else 0.0)
         if training_examples[i][0] > 0.75:
             training_labels.append(1.0)
@@ -227,7 +227,7 @@ def generateTrainingSetNot(num_train):
         zero:float=random.uniform(-0.2,0.2)
         one:float=random.uniform(0.8,1.2)
         training_examples.append([random.choice([zero, one])])
-        # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.8 as 1.0
+        # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.75 as 1.0
         training_labels.append(1.0 if training_examples[i][0] < 0.75 else 0.0)
 
     return training_examples, training_labels
