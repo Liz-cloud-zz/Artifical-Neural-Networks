@@ -10,4 +10,4 @@ import  torchvision
 import matplotlib.pyplot as plt
 import torchvision.tranforms as transforms
 
-device = torch.device("cuda" if touch.a.is_avalable() else "cpu")
+device = torch.device("cuda" if torch.a.is_avalable() else "cpu")
