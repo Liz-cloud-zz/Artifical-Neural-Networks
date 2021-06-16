@@ -53,7 +53,7 @@ def main():
     image, label = next(check_data)
     print(image.shape, label.shape)
 
-    # try to manipulate and view the images
+    # try to manipulate and view the image
     for i in range(1, 60 + 1):
         print(label[i])
         plt.subplot(6, 10, i)
@@ -73,7 +73,8 @@ def main():
         nn.ReLU(),
         nn.Linear(in_features=hidden_layer, out_features=hidden_layer),
         nn.ReLU(),
-        nn.Linear(in_features=hidden_layer, out_features=num_classes)
+        nn.Linear(in_features=hidden_layer, out_features=num_classes),
+        nn.LogSoftmax(dim=1)
     )
     repr(model)
     # the loss using the cross Entropy loss because when it is multi class classification
@@ -85,16 +86,15 @@ def main():
     samples = len(train_loader)  # len total samples
 
     # put model inside of gpu
-    #
     model = model.to(device)
 
     # make training loop COre of Neural Network
     time0 = time()
     for ep in range(num_epochs):
         for step, (image, label) in enumerate(train_loader):
-            # pass images to device
+            # pass image to device
             image = image.reshape(-1, 784).to(device)
-            # pass labels to device
+            # pass label to device
             label = label.to(device)
 
             # get output
@@ -115,10 +115,10 @@ def main():
             # if training losses are decreases that is a good thing
     print("\nTime taken to train is (in minutes)-> ", (time() - time0) / 60)
 
-    # view images with their classes:
+    # view image with their classes:
     # use the test dataset
     image, label = next(iter(test_loader))
-    img=image[0].view(1, 784)
+    img = image[0].view(1, 784)
 
     # Turn off gradients to speed up this part
     with torch.no_grad():
@@ -129,6 +129,25 @@ def main():
     probability = list(ps.cpu().numpy()[0])
     print("Predicted Digit ->", probability.index(max(probability)))
     viewClassification(img.view(1, 28, 28), ps)
+
+    correct_count, all_count = 0, 0
+    for image, label in test_loader:
+        for i in range(len(label)):
+            img = image[i].view(1, 784)
+            with torch.no_grad():
+                log_probs = model(img)
+
+            ps = torch.exp(log_probs)
+            probability = list(ps.numpy()[0])
+            pred_label = probability .index(max(probability ))
+            true_label = label.numpy()[i]
+            if true_label == pred_label:
+                correct_count += 1
+            all_count += 1
+    print("Number Of Images Tested ->", all_count)
+    print("\nModel Accuracy ->", (correct_count/all_count))
+
+    torch.save(model,'./model.plt ')
 
 
 def viewClassification(image, ps):
