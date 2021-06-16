@@ -31,16 +31,16 @@ def main():
     generate_validation_set = True
     num_valid = 100
 
-    training_examples_all: List[float]= [[1.0, 1.0],
-                             [1.0, 0.0],
-                             [0.0, 1.0],
-                             [0.0, 0.0]]
+    training_examples_all: List[float] = [[1.0, 1.0],
+                                          [1.0, 0.0],
+                                          [0.0, 1.0],
+                                          [0.0, 0.0]]
 
     training_examples_NOT: List[float] = [[1.0], [0.0]]
 
     training_labels_and: List[float] = [1.0, 0.0, 0.0, 0.0]
 
-    training_labels_or: List[float]= [1.0, 1.0, 1.0, 0.0]
+    training_labels_or: List[float] = [1.0, 1.0, 1.0, 0.0]
 
     training_labels_not: List[float] = [0.0, 1.0]
 
@@ -48,7 +48,7 @@ def main():
     validate_examples = []
     validate_labels = []
     training_examples = []
-    training_labels= []
+    training_labels = []
 
     # train AND gate
     if generate_training_set:
@@ -141,9 +141,9 @@ def generateValidationSetAnd(num_train):
     validate_labels = []
 
     for i in range(num_train):
-        zero:float=random.uniform(-0.2,0.2)
-        one:float=random.uniform(0.2,1.2)
-        validate_examples.append([random.choice([zero, one]),random.choice([zero, one])])
+        zero: float = random.uniform(-0.2, 0.2)
+        one: float = random.uniform(0.2, 1.2)
+        validate_examples.append([random.choice([zero, one]), random.choice([zero, one])])
         validate_labels.append(1.0 if validate_examples[i][0] > 0.75 and validate_examples[i][1] > 0.75 else 0.0)
 
     return validate_examples, validate_labels
@@ -152,13 +152,12 @@ def generateValidationSetAnd(num_train):
 # Generate Training Set for AND GATE
 def generateTrainingSetAnd(num_train):
     training_examples = []
-    training_labels= []
+    training_labels = []
 
     for i in range(num_train):
-
-        zero:float=random.uniform(-0.2,0.2)
-        one:float=random.uniform(0.2,1.2)
-        training_examples.append([random.choice([zero, one]),random.choice([zero, one])])
+        zero: float = random.uniform(-0.2, 0.2)
+        one: float = random.uniform(0.2, 1.2)
+        training_examples.append([random.choice([zero, one]), random.choice([zero, one])])
         # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.75 as 1.0
         training_labels.append(1.0 if training_examples[i][0] > 0.75 and training_examples[i][1] > 0.75 else 0.0)
 
@@ -167,8 +166,8 @@ def generateTrainingSetAnd(num_train):
 
 # Generate Validation Set for OR GATE
 def generateValidationSetOr(num_train):
-    validate_examples:float = []
-    validate_labels:float = []
+    validate_examples: float = []
+    validate_labels: float = []
 
     for i in range(num_train):
         zero: float = random.uniform(-0.2, 0.2)
@@ -187,8 +186,8 @@ def generateValidationSetOr(num_train):
 
 # Generate Training Set for OR GATE
 def generateTrainingSetOr(num_train):
-    training_examples:float = []
-    training_labels:float = []
+    training_examples: float = []
+    training_labels: float = []
     for i in range(num_train):
         zero: float = random.uniform(-0.2, 0.2)
         one: float = random.uniform(0.8, 1.2)
@@ -206,26 +205,26 @@ def generateTrainingSetOr(num_train):
 
 # Generate Validation Set for NOT GATE
 def generateValidationSetNot(num_train):
-    validate_examples:float = []
-    validate_labels:float = []
+    validate_examples: float = []
+    validate_labels: float = []
 
     for i in range(num_train):
-        zero:float=random.uniform(-0.2,0.2)
-        one:float=random.uniform(0.8,1.2)
+        zero: float = random.uniform(-0.2, 0.2)
+        one: float = random.uniform(0.8, 1.2)
         validate_examples.append([random.random()])
-        validate_labels.append(0.0 if validate_examples[i][0] >0.75 else 1.0)
+        validate_labels.append(0.0 if validate_examples[i][0] > 0.75 else 1.0)
 
     return validate_examples, validate_labels
 
 
 # Generate Training Set for NOT GATE
 def generateTrainingSetNot(num_train):
-    training_examples:float = []
-    training_labels:float = []
+    training_examples: float = []
+    training_labels: float = []
 
     for i in range(num_train):
-        zero:float=random.uniform(-0.2,0.2)
-        one:float=random.uniform(0.8,1.2)
+        zero: float = random.uniform(-0.2, 0.2)
+        one: float = random.uniform(0.8, 1.2)
         training_examples.append([random.random()])
         # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.75 as 1.0
         training_labels.append(0.0 if training_examples[i][0] > 0.75 else 1.0)

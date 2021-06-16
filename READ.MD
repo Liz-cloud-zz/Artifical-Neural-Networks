@@ -1,4 +1,5 @@
 # Artificial Neural Networks
+AND.py , OR.py, NOT.py are test files for the individual gates to see if they are trained properly
 
 # XOR Problem:
 1. Train the AND Gate

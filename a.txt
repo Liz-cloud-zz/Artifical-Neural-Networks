@@ -1,0 +1,71 @@
+commit b010912e59119ce5c82bbc09785b2795fea13590
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Wed Jun 16 15:16:16 2021 +0200
+
+    testing xor gate
+
+commit 09d43ea2a06c231e3506b42fe1e8f2ec4b935d41
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Wed Jun 16 07:03:53 2021 +0200
+
+    README Handwriting recognition
+
+commit 369c550716f19aac49794c1c2b268218ef8902e9
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Wed Jun 16 06:49:28 2021 +0200
+
+    README XOR Problem
+
+commit 00a7cb6b4c3043ae3eb6935ca03eb62dd589dcba
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Wed Jun 16 06:29:27 2021 +0200
+
+    test accuracy
+
+commit 6f94a4f993580435a7992ccb1844f8988ce90766
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Wed Jun 16 04:30:55 2021 +0200
+
+    deep leaning
+
+commit 67ff78da99fd4f22c159412f80c69a7437213040
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Wed Jun 16 03:31:07 2021 +0200
+
+    shallow leaning
+
+commit 9e408a0a8280a986bdbed4f19b7d49ba8563fed5
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Wed Jun 16 00:24:49 2021 +0200
+
+    view images in plot
+
+commit ff3de94ef23aac6152f113636d77601cda2a5931
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Tue Jun 15 14:38:28 2021 +0200
+
+    test torch library functions
+
+commit 50c952d70df3578e2355217317b16043f3aee009
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Tue Jun 15 14:34:39 2021 +0200
+
+    test import torch
+
+commit 5a543c1ffc7701378f00209083ecbf6c61ba3372
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Tue Jun 15 14:06:39 2021 +0200
+
+    XOR problem report
+
+commit 72e8ed47da8dcf1b8510cd5a455c8a906e53774e
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Tue Jun 15 02:04:44 2021 +0200
+
+    Classifier imports
+
+commit 6d770a092b213a1e768a72bd883576be09fdc6ae
+Author: Liz-cloud <mfnlin003@myuct.ac.za>
+Date:   Tue Jun 15 01:30:45 2021 +0200
+
+    XOR GATE
