@@ -122,7 +122,7 @@ def main():
 
     # Turn off gradients to speed up this part
     with torch.no_grad():
-        log_probs = model(img.cuda())
+        log_probs = model(img.cpu())
 
     # Output of the network are log-probabilities, need to take exponential for probabilities
     ps = torch.exp(log_probs)
