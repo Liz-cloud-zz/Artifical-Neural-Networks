@@ -11,3 +11,15 @@
 8. Output is printed
 
 # Handwriting recognition :
+1. Declare a device
+2. Declare hyper variables
+3. Get training data
+4. Get test data
+5. Check data sample
+6. View image in gray scaled
+7. Build a model of 4 hidden layers
+8. Declare cross entropy loss
+9. Declare a optimizer 
+10. Check size of sample
+11. make training loop for neural network
+12. Define class to view the classification

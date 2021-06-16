@@ -154,7 +154,7 @@ def viewClassification(image, ps):
     # Function for viewing an image and its predicted classes.
 
     ps = ps.cpu().data.numpy().squeeze()
-    figure, (axis1, axis2) = plt.subplot(figsize=(6, 9), nclos=2)
+    figure, (axis1, axis2) = plt.subplots(figsize=(6, 9), ncols=2)
     axis1.imshow(image.resize_(1, 28, 28).numpy().squeeze())
     axis2.barh(np.arange(10), ps)
     axis2.set_aspect(0.1)
