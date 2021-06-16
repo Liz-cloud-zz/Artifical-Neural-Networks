@@ -20,7 +20,7 @@ from typing import List
 from Perceptron import Perceptron
 
 # Create Perceptrons
-NOT = Perceptron(1, bias=1.0)
+NOT = Perceptron(1, bias=0.5)
 AND = Perceptron(2, bias=-1.0)
 OR = Perceptron(2, bias=-1.0)
 
@@ -155,6 +155,7 @@ def generateTrainingSetAnd(num_train):
     training_labels= []
 
     for i in range(num_train):
+
         zero:float=random.uniform(-0.2,0.2)
         one:float=random.uniform(0.2,1.2)
         training_examples.append([random.choice([zero, one]),random.choice([zero, one])])
@@ -170,13 +171,13 @@ def generateValidationSetOr(num_train):
     validate_labels:float = []
 
     for i in range(num_train):
-        zero:float=random.uniform(-0.2,0.2)
-        one:float=random.uniform(0.2,1.2)
-        validate_examples.append([random.choice([zero, one]),random.choice([zero, one])])
+        zero: float = random.uniform(-0.2, 0.2)
+        one: float = random.uniform(0.2, 1.2)
+        validate_examples.append([random.choice([zero, one]), random.choice([zero, one])])
         # validate_labels.append(1.0 if (validate_examples[i][0] > 0.75 or validate_examples[i][1] > 0.75) else 0.0)
         if validate_examples[i][0] > 0.75:
             validate_labels.append(1.0)
-        elif validate_examples[i][1]>0.75:
+        elif validate_examples[i][1] > 0.75:
             validate_labels.append(1.0)
         else:
             validate_labels.append(0.0)
@@ -188,17 +189,16 @@ def generateValidationSetOr(num_train):
 def generateTrainingSetOr(num_train):
     training_examples:float = []
     training_labels:float = []
-
     for i in range(num_train):
-        zero:float=random.uniform(-0.2,0.2)
-        one:float=random.uniform(0.8,1.2)
-        training_examples.append([random.choice([zero, one]),random.choice([zero, one])])
+        zero: float = random.uniform(-0.2, 0.2)
+        one: float = random.uniform(0.8, 1.2)
+        training_examples.append([random.choice([zero, one]), random.choice([zero, one])])
         # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.75 as 1.0
         # training_labels.append(1.0 if training_examples[i][0] > 0.75 or training_examples[i][1] > 0.75 else 0.0)
         if training_examples[i][0] > 0.75:
             training_labels.append(1.0)
-        elif training_examples[i][1]>0.75:
-            training_labels.append(1.0)
+        elif training_examples[i][1] > 0.75: \
+                training_labels.append(1.0)
         else:
             training_labels.append(0.0)
     return training_examples, training_labels
@@ -212,8 +212,8 @@ def generateValidationSetNot(num_train):
     for i in range(num_train):
         zero:float=random.uniform(-0.2,0.2)
         one:float=random.uniform(0.8,1.2)
-        validate_examples.append([random.choice([zero, one])])
-        validate_labels.append(1.0 if validate_examples[i][0] < 0.75 else 0.0)
+        validate_examples.append([random.random()])
+        validate_labels.append(0.0 if validate_examples[i][0] >0.75 else 1.0)
 
     return validate_examples, validate_labels
 
@@ -226,9 +226,9 @@ def generateTrainingSetNot(num_train):
     for i in range(num_train):
         zero:float=random.uniform(-0.2,0.2)
         one:float=random.uniform(0.8,1.2)
-        training_examples.append([random.choice([zero, one])])
+        training_examples.append([random.random()])
         # We want our perceptron to be noise tolerant, so we label all examples where x1 and x2 > 0.75 as 1.0
-        training_labels.append(1.0 if training_examples[i][0] < 0.75 else 0.0)
+        training_labels.append(0.0 if training_examples[i][0] > 0.75 else 1.0)
 
     return training_examples, training_labels
 

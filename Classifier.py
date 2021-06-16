@@ -163,6 +163,7 @@ def viewClassification(image, ps):
     axis2.set_title('Class Probability')
     axis2.set_xlim(0, 1.1)
     plt.tight_layout()
+    plt.show()
 
 
 if __name__ == '__main__':
