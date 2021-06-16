@@ -5,6 +5,7 @@
 # Activation function
 
 # use gpu operator to fasten up our operators
+import numpy as np
 import torch
 # used for neural networks for data loader
 import torch.nn as nn
@@ -14,6 +15,8 @@ import matplotlib.pyplot as plt
 from torchvision import transforms
 from torch import optim
 from time import time
+
+
 # import os
 # import sys
 
@@ -86,7 +89,7 @@ def main():
     model = model.to(device)
 
     # make training loop COre of Neural Network
-    time0=time()
+    time0 = time()
     for ep in range(num_epochs):
         for step, (image, label) in enumerate(train_loader):
             # pass images to device
@@ -110,7 +113,37 @@ def main():
             print("Epoch-> {}/{}, Step-> {}/{}, Loss-> {:.4f}".format(ep, num_epochs, step, samples, loss.item()))
 
             # if training losses are decreases that is a good thing
-    print("\nTime taken to train is (in minutes)-> ",(time() -time0)/60)
+    print("\nTime taken to train is (in minutes)-> ", (time() - time0) / 60)
+
+    # view images with their classes:
+    # use the test dataset
+    image, label = next(iter(test_loader))
+    img=image[0].view(1, 784)
+
+    # Turn off gradients to speed up this part
+    with torch.no_grad():
+        log_probs = model(img.cuda())
+
+    # Output of the network are log-probabilities, need to take exponential for probabilities
+    ps = torch.exp(log_probs)
+    probability = list(ps.cpu().numpy()[0])
+    print("Predicted Digit ->", probability.index(max(probability)))
+    viewClassification(img.view(1, 28, 28), ps)
+
+
+def viewClassification(image, ps):
+    # Function for viewing an image and its predicted classes.
+
+    ps = ps.cpu().data.numpy().squeeze()
+    figure, (axis1, axis2) = plt.subplot(figsize=(6, 9), nclos=2)
+    axis1.imshow(image.resize_(1, 28, 28).numpy().squeeze())
+    axis2.barh(np.arange(10), ps)
+    axis2.set_aspect(0.1)
+    axis2.set_yticks(np.arange(10))
+    axis2.set_yticklabels(np.arange(10))
+    axis2.set_title('Class Probability')
+    axis2.set_xlim(0, 1.1)
+    plt.tight_layout()
 
 
 if __name__ == '__main__':
